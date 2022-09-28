@@ -1,0 +1,26 @@
+{% load static %}
+
+<!--Link css file-->
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" href="{% static 'css/size.css' %}">
+<header>
+        <nav>
+            <!--Title-->
+            <a id="logo-box" href="{% url 'home' %}">
+                <div id = "title">kiwipages</div>
+
+            </a>
+
+            <!--Display Login/Sign up button or logout if signed in-->
+            <div id="nav-box">
+                {% if request.user.is_authenticated %}
+                <p id="display-user">Logged in as {{request.user}}</p>
+                <a href="{% url 'logout' %}" class="header-button">Logout</a>
+                {% else %}
+                <a href="{% url 'login' %}" id="login_button" class="header-button">LOGIN</a>
+                <div class="header-divider">|</div>
+                <a href="{% url 'register' %}" id="signup_button" class="header-button">SIGN UP</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
