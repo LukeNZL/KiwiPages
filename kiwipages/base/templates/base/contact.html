@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+<body>
+    <div id="contact-box">
+        <div style="display:flex; justify-content:flex-start;">
+            <div id="user-image"></div>            
+            <div id="contact-edit-button-box">
+                <div id="edit-contact-button" class="unselectable">Edit Contact</div>
+                <div id="delete-contact-button" class="unselectable">Delete Contact</div>
+            </div>
+        </div>
+        <div>
+            <div id="contact-name" style="margin-bottom:40px;">Name: </div>
+            <div id="contact-email">Email: </div>
+            <div id="contact-phone">Phone: </div>
+            <div id="contact-preffered-contact-info" style="margin-bottom:40px;">Preffered Contact Info: </div>
+            <div id="contact-address">Address: </div>
+            <div id="contact-info" style="height:250px;">Info: </div>
+            
+        </div>
+        <a id="back-button" class="unselectable" href="{% url 'home' %}">Back</a>
+    </div>
+
+</body>
+
+{% endblock %}

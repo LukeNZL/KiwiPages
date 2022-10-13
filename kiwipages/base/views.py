@@ -34,10 +34,11 @@ def loginPage(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('home')
+    return redirect('login')
 
 def registerPage(request):
     form = RegisterForm()
+    page = 'register'
 
     if request.method == 'POST':
         form = RegisterForm(request.POST)
@@ -49,9 +50,17 @@ def registerPage(request):
             return redirect('home')
         else:
             messages.error(request, 'An error occurred during registration')
-
-    return render(request, 'base/login_register.html', {'form': form})
+    context = {'page': page, 'form': form}
+    return render(request, 'base/login_register.html', context)
 
 def home(request):
 
     return render(request, 'base/home.html')
+
+def contact(request):
+
+    return render(request, 'base/contact.html')
+
+def settings(request):
+
+    return render(request, 'base/settings.html')

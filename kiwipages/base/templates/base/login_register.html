@@ -8,13 +8,13 @@
     <form method="POST", action="">
         {% csrf_token %}
         <!--Login form-->
-        <div class="login-box">
-            <input class="user-input" type="text" placeholder="Username" name="username">
-            <input class="user-input" type="password" placeholder="Password" name="password">
-            <div>
-                <input class="login-button" type="submit" value="Login" />
-            </div>
-
+        <div id="signin-box">
+            <div style="margin-top: 10px; margin-bottom:20px;">Sign in</div>
+            <input class="login-input" type="text" placeholder="Username" name="username"></input>
+            <input class="login-input" type="password" placeholder="Password" name="password"></input>
+            <input id="signin-button" type="submit" value="Login"/>
+            <div>Or</div>
+            <a id="create-account-button" class="unselectable" href="{% url 'register' %}">Create an account</a>
         </div>
     </form>
 </div>
@@ -23,13 +23,16 @@
     <form method="POST">
         {% csrf_token %}
         <!--Signup form that only works with no closing-->
-        <div class="login-box">
-            <input class="user-input" placeholder="Username" action="{{form.username}}
-            <input class="user-input" placeholder="Password" type="password" action="{{form.password1}}
-            <input class="user-input" placeholder="Confirm Password" type="password" action="{{form.password2}}
-            <div>
-                <input class="login-button" type="submit" value="Sign Up" />
-            </div>
+        <div id="create-account-box">
+            <div style="margin-top:10px;">Create an account</div>
+
+            <input class="login-input" type="text" placeholder="Username" name="username" action="{{form.username}}
+            <input class="login-input" type="password" placeholder="Password" name="password" action="{{form.password1}}
+            <input class=" login-input" type="password" placeholder="Confirm Password" name="confirmpassword" action="{{form.password2}}
+
+            <input id="create-account-button" style="background-color:white" type="submit" value="Create Account" />
+            <div>Or</div>
+            <a id="signin-button" class="unselectable" style="background-color: #B0B0B0;" href="{% url 'login' %}">Back</a>
         </div>
     </form>
 </div>

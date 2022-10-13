@@ -1,17 +1,60 @@
 {% load static %}
 
+{% block content %}
+
 <!--Link css file-->
-<link rel="stylesheet" href="{% static 'css/main.css' %}">
-<link rel="stylesheet" href="{% static 'css/size.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+{% if page == 'register' %}
+
+    <nav style="justify-content:center;">
+        <div id="title" class="unselectable">
+            <div style="display: flex; justify-content: center; font-size: 42px;">Kiwi Storages</div>
+            <div style="font-size: 28px;">Your own personal contact storage system</div>
+        </div>
+    </nav>
+
+
+{% elif page == 'login' %}
+
+    <nav style="justify-content:center;">
+        <div id="title" class="unselectable">
+            <div style="display: flex; justify-content: center; font-size: 42px;">Kiwi Storages</div>
+            <div style="font-size: 28px;">Your own personal contact storage system</div>
+        </div>
+    </nav>
+
+
+
+{% else %}
+
+    <nav>
+        <a id="settings-button" href="{% url 'settings' %}">
+            <img id="settings-image" src="{% static 'images/settingd.png' %}">
+        </a>
+
+        <a id="title" class="unselectable" href="{% url 'home' %}">
+            <div style="display: flex; justify-content: center; font-size: 42px;">Kiwi Storages</div>
+            <div style="font-size: 28px;">Your own personal contact storage system</div>
+        </a>
+
+        <a id="logout-button" class="unselectable" href="{% url 'logout' %}">Sign Out</a>
+    </nav>
+
+
+{% endif %}
+
+{% endblock %}
+<!--
 <header>
         <nav>
-            <!--Title-->
+            &lt;!&ndash;Title&ndash;&gt;
             <a id="logo-box" href="{% url 'home' %}">
                 <div id = "title">kiwipages</div>
-
             </a>
 
-            <!--Display Login/Sign up button or logout if signed in-->
+            &lt;!&ndash;Display Login/Sign up button or logout if signed in&ndash;&gt;
             <div id="nav-box">
                 {% if request.user.is_authenticated %}
                 <p id="display-user">Logged in as {{request.user}}</p>
@@ -23,4 +66,4 @@
                 {% endif %}
             </div>
         </nav>
-    </header>
+    </header>-->
