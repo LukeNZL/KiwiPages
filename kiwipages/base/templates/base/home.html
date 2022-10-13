@@ -1,0 +1,119 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+<body>
+    <div style=" margin:auto; margin-top: 50px; width: 400px; display: flex; justify-content: space-between; align-items: center;">
+        <div id="add-contact-button" onclick="openForm()">
+            <img id="plus-image" src="{% static 'images/plus.png' %}">
+        </div>
+        <div id="search-bar" contenteditable="True"></div>
+    </div>
+
+    <div id="add-contact-popup">
+        <div style="width:100%; padding-top: 10px; margin-left:40px; display: flex; flex-direction:row; align-items: center;">
+            <div class="unselectable" style="font-size: 32px; margin-right: 95px;" onclick="closeForm()">X</div>
+            <div>New Contact</div>
+        </div>
+
+        <div class = "contact-input" contentEditable data-placeholder="Name"></div>
+        <div class = "contact-input" contentEditable data-placeholder="Phone"></div>
+        <div class = "contact-input" contentEditable data-placeholder="Email"></div>
+        <div class = "contact-input" contentEditable data-placeholder="Address"></div>
+        <div class = "contact-input" style="font-size:18px;" contentEditable data-placeholder="Preffered Contact Method"></div>
+        <div class = "contact-input" style="height: 100px; width: 300px; align-items: flex-start; padding-top: 20px;" contentEditable data-placeholder="Description"></div>
+        <div class="new-contact-buttons unselectable">Upload Profile image</div>
+        <div class="new-contact-buttons unselectable">Create Contact</div>
+
+    </div>
+
+    <script>
+        function openForm(){
+            document.getElementById("add-contact-popup").style.display = "flex";
+        }
+        function closeForm(){
+            document.getElementById("add-contact-popup").style.display = "none";
+        }
+    </script>
+
+
+    <div id="contact-list">
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
+            <div class="contact-square"></div>
+            <div style="display: flex; justify-content:center">Person Name</div>
+        </a>
+    </div>
+</body>
+
+{% endblock %}
+
+</html>
