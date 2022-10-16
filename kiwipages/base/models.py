@@ -8,10 +8,10 @@ class Contact(models.Model):
     phnum = models.CharField(max_length=30)
     address = models.CharField(max_length=30)
     PCM = models.CharField(max_length=10)
-    ProfilePicture = models.ImageField(upload_to='')
     Description = models.CharField(max_length=150)
-
     created = models.DateTimeField(auto_now_add=True)
+    owner = models.CharField(max_length=150)
+    ProfilePicture = models.ImageField(upload_to='images/')
 
-    class Meta:
-      ordering = ['name']
+
+

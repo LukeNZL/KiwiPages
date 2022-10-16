@@ -3,6 +3,24 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.forms.forms import Form
+from .models import Contact
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['name', 'email','phnum','address','PCM','ProfilePicture','Description',]
+        widgets = {
+            'name': forms.TextInput(attrs={'placeholder': 'Name'}),
+            'email': forms.TextInput(attrs={'placeholder': 'Email'}),
+            'phnum': forms.TextInput(attrs={'placeholder': 'Phone Number'}),
+            'address': forms.TextInput(attrs={'placeholder': 'Address'}),
+            'PCM': forms.TextInput(attrs={'placeholder': 'Preferred Contact Method'}),
+            'Description': forms.TextInput(attrs={'placeholder': 'Enter description here'}),
+        }
+
+    # def save(self, commit=True):
+    #     contact = Contact.createContact(self)
+    #     return contact
 
 
 # custom form built off of prebuilt django form
