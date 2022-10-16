@@ -16,16 +16,18 @@
             <div class="unselectable" style="font-size: 32px; margin-right: 95px;" onclick="closeForm()">X</div>
             <div>New Contact</div>
         </div>
-
-        <div class = "contact-input" contentEditable data-placeholder="Name"></div>
-        <div class = "contact-input" contentEditable data-placeholder="Phone"></div>
-        <div class = "contact-input" contentEditable data-placeholder="Email"></div>
-        <div class = "contact-input" contentEditable data-placeholder="Address"></div>
-        <div class = "contact-input" style="font-size:18px;" contentEditable data-placeholder="Preffered Contact Method"></div>
-        <div class = "contact-input" style="height: 100px; width: 300px; align-items: flex-start; padding-top: 20px;" contentEditable data-placeholder="Description"></div>
-        <div class="new-contact-buttons unselectable">Upload Profile image</div>
-        <div class="new-contact-buttons unselectable">Create Contact</div>
-
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <!--<input class = "contact-input" type="text" placeholder="Name" action="{{form.name}}">
+            <input class = "contact-input" type="text" placeholder="Phone" action="{{form.phnum}}">
+            <input class = "contact-input" type="text" placeholder="Email" action="{{form.email}}">
+            <input class = "contact-input" type="text" placeholder="Address" action="{{form.address}}">
+            <input class = "contact-input" style="font-size:18px;" type="text" placeholder="Preffered Contact Method" action="{{form.PCM}}">
+            <input class = "contact-input" style="height: 100px; width: 300px; align-items: flex-start; padding-top: 20px;" type="text" placeholder="Description" action="{{form.Description}}">
+            <div class="new-contact-buttons unselectable">Upload Profile image</div>-->
+            <input class="new-contact-buttons" type="submit" value="Create Contact"></input>
+        </form>
     </div>
 
     <script>
@@ -39,78 +41,16 @@
 
 
     <div id="contact-list">
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
+    {% for ProfilePicture in contacts %}
+        {% if ProfilePicture.owner == name %}
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' ProfilePicture.id %}">
+            <div class="contact-square">
+                <img class="contact-image" style="margin-right: 30px;" src="{{ProfilePicture.ProfilePicture.url}}"></img>
+            </div>
+            <div style="display: flex; justify-content:center">{{ProfilePicture.name}}</div>
         </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' %}">
-            <div class="contact-square"></div>
-            <div style="display: flex; justify-content:center">Person Name</div>
-        </a>
+        {% endif %}
+    {% endfor %}
     </div>
 </body>
 
