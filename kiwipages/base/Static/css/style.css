@@ -87,7 +87,7 @@ nav{
 #add-contact-popup{
     position: fixed;
     width: 400px;
-    height: 650px;
+    height: 65%;
     background-color: #D9D9D9;
     margin-top: 30px;
     margin-left: calc(50% - 200px);
@@ -99,22 +99,31 @@ nav{
 }
 
 .contact-input{
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin-top: 10px;
     margin-bottom: 5px;
-    height: 50px;
-    width: 200px;
+    height: 40px;
+    width: 82%;
     background-color: white;
     display: flex;
     align-items: center;
 }
 
+#description-input{
+    height: 100px;
+    width: 82%;
+    margin-bottom: 20px;
+}
+
+
 .new-contact-buttons{
     background-color: #B0B0B0;
     height: 50px;
     width: 200px;
+    font-size: 20px;
     border-radius: 20px;
+    border-width: 2px;
     padding-left: 15px;
     padding-right: 15px;
     margin-top: 10px;

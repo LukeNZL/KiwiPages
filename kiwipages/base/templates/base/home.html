@@ -16,17 +16,17 @@
             <div class="unselectable" style="font-size: 32px; margin-right: 95px;" onclick="closeForm()">X</div>
             <div>New Contact</div>
         </div>
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" action="">
             {% csrf_token %}
-            {{ form.as_p }}
-            <!--<input class = "contact-input" type="text" placeholder="Name" action="{{form.name}}">
-            <input class = "contact-input" type="text" placeholder="Phone" action="{{form.phnum}}">
-            <input class = "contact-input" type="text" placeholder="Email" action="{{form.email}}">
-            <input class = "contact-input" type="text" placeholder="Address" action="{{form.address}}">
-            <input class = "contact-input" style="font-size:18px;" type="text" placeholder="Preffered Contact Method" action="{{form.PCM}}">
-            <input class = "contact-input" style="height: 100px; width: 300px; align-items: flex-start; padding-top: 20px;" type="text" placeholder="Description" action="{{form.Description}}">
-            <div class="new-contact-buttons unselectable">Upload Profile image</div>-->
-            <input class="new-contact-buttons" type="submit" value="Create Contact"></input>
+            <!--{{ form.as_p }}-->
+            <input class = "contact-input" type="text" placeholder="Name" name="name">
+            <input class = "contact-input" type="text" placeholder="Phone" name="phnum">
+            <input class = "contact-input" type="text" placeholder="Email" name="email">
+            <input class = "contact-input" type="text" placeholder="Address" name="address">
+            <input class = "contact-input" style="font-size:18px;" type="text" placeholder="Preffered Contact Method" name="PCM">
+            <input class = "contact-input" id="description-input" type="text" placeholder="Description" name="Description">
+            <input style="font-size:18px; margin-bottom:20px;" type="file" name="ProfilePicture">
+            <input class="new-contact-buttons" type="submit" value="Create Contact"/></input>
         </form>
     </div>
 
