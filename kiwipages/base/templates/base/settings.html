@@ -3,29 +3,45 @@
 {% block content %}
 
 <body>
+    <div id="add-contact-popup" style="height: 300px; margin-top: 150px;">
+        <div style="width:100%; padding-top: 10px; margin-left:40px; display: flex; flex-direction:row; align-items: center;">
+            <div class="unselectable" style="font-size: 32px; margin-right: 95px;" onclick="closeForm()">X</div>
+            <div>Change Password</div>
+        </div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input class = "contact-input" type="password" placeholder="New Password" name="password1">
+            <input class = "contact-input" type="password" placeholder="Confirm Password" name="password2">
+
+            <input class="new-contact-buttons" type="submit" value="Confirm"/></input>
+        </form>
+    </div>
 
     <div id="settings-box">
-        <div style="margin-top:30px; margin-bottom:30px;">Settings</div>
-        <div style="margin-bottom:30px;">User Profile:</div>
+
+        <div style="margin-top:30px; margin-bottom:30px; font-size:30px;">Settings</div>
 
         <div style="display:flex; flex-direction: row;">
             <div style="margin-right:20px;">
-                <div>Username:</div>
-                <div>Email</div>
-                <div>Password</div>                
+                <div style="font-size:20px;">Username: {{request.user}}</div>
+                <div id="edit-contact-button" style="margin-left:0px; margin-top: 210%;" onclick="openForm()">Change Password</div>
             </div>
             <div style="margin-right:20px;">
-                <div>abcderf:</div>
-                <div>abc@gmail.com</div>
-                <div>********</div>
             </div>
-            <div style="margin-bottom:400px;">
-                <div>Edit</div>
-                <div>Edit</div>
-                <div>Edit</div>
+            <div style="margin-bottom:500px;">
+
             </div> 
         </div>
     </div>
+
+    <script>
+        function openForm(){
+            document.getElementById("add-contact-popup").style.display = "flex";
+        }
+        function closeForm(){
+            document.getElementById("add-contact-popup").style.display = "none";
+        }
+    </script>
 
 </body>
 

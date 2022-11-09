@@ -8,7 +8,12 @@
         <div id="add-contact-button" onclick="openForm()">
             <img id="plus-image" src="{% static 'images/plus.png' %}">
         </div>
-        <div id="search-bar" contenteditable="True"></div>
+        <form method="GET">
+            {% csrf_token %}
+            <input id="search-bar" contenteditable="True" name="search"></input>
+            <input type="submit" hidden />
+        </form>
+
     </div>
 
     <div id="add-contact-popup">
@@ -16,17 +21,17 @@
             <div class="unselectable" style="font-size: 32px; margin-right: 95px;" onclick="closeForm()">X</div>
             <div>New Contact</div>
         </div>
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" action="">
             {% csrf_token %}
-            {{ form.as_p }}
-            <!--<input class = "contact-input" type="text" placeholder="Name" action="{{form.name}}">
-            <input class = "contact-input" type="text" placeholder="Phone" action="{{form.phnum}}">
-            <input class = "contact-input" type="text" placeholder="Email" action="{{form.email}}">
-            <input class = "contact-input" type="text" placeholder="Address" action="{{form.address}}">
-            <input class = "contact-input" style="font-size:18px;" type="text" placeholder="Preffered Contact Method" action="{{form.PCM}}">
-            <input class = "contact-input" style="height: 100px; width: 300px; align-items: flex-start; padding-top: 20px;" type="text" placeholder="Description" action="{{form.Description}}">
-            <div class="new-contact-buttons unselectable">Upload Profile image</div>-->
-            <input class="new-contact-buttons" type="submit" value="Create Contact"></input>
+            <!--{{ form.as_p }}-->
+            <input class = "contact-input" type="text" placeholder="Name" name="name">
+            <input class = "contact-input" type="text" placeholder="Phone" name="phnum">
+            <input class = "contact-input" type="text" placeholder="Email" name="email">
+            <input class = "contact-input" type="text" placeholder="Address" name="address">
+            <input class = "contact-input" style="font-size:18px;" type="text" placeholder="Preffered Contact Method" name="PCM">
+            <input class = "contact-input" id="description-input" type="text" placeholder="Description" name="Description">
+            <input style="font-size:18px; margin-bottom:20px;" type="file" name="ProfilePicture">
+            <input class="new-contact-buttons" type="submit" value="Create Contact" name="addContact"/></input>
         </form>
     </div>
 
@@ -41,15 +46,13 @@
 
 
     <div id="contact-list">
-    {% for ProfilePicture in contacts %}
-        {% if ProfilePicture.owner == name %}
-        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' ProfilePicture.id %}">
+    {% for contact in contacts %}
+        <a style="height: 180px; width: 150px; margin: 20px;" href="{% url 'contact' contact.id %}">
             <div class="contact-square">
-                <img class="contact-image" style="margin-right: 30px;" src="{{ProfilePicture.ProfilePicture.url}}"></img>
+                <img class="contact-image" style="margin-right: 30px;" src="{{contact.ProfilePicture.url}}"></img>
             </div>
-            <div style="display: flex; justify-content:center">{{ProfilePicture.name}}</div>
+            <div style="display: flex; justify-content:center">{{contact.name}}</div>
         </a>
-        {% endif %}
     {% endfor %}
     </div>
 </body>
