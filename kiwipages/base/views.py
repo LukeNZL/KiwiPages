@@ -4,8 +4,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from .forms import RegisterForm
-from .forms import ContactForm
+from .forms import RegisterForm, ContactForm
 from .models import Contact
 
 # login view checks entered username and password against database and
@@ -57,7 +56,7 @@ def registerPage(request):
     return render(request, 'base/login_register.html', context)
 
 def home(request):
-    name = str(request.user)
+    user_name = str(request.user)
 
     if request.user.is_authenticated:
         form = ContactForm()
@@ -71,15 +70,22 @@ def home(request):
                 return redirect('home')
             else:
                 messages.error(request, 'An error occurred during contact creation')
-        context = {'form': form, 'contacts' : contact_list, 'name': name}
+
+        if request.method == 'GET':
+            if "search" in request.GET:
+                search_value = request.GET['search']
+                contact_list=contact_list.filter(name__contains=search_value)
+
+        contact_list = contact_list.filter(owner=user_name)
+        context = {'form': form, 'contacts' : contact_list}
         return render(request, 'base/home.html', context)
     else:
         return redirect('login')
 
 def contact(request, contact_id):
     contact = get_object_or_404(Contact, pk=contact_id)
-    content = {'contact': contact}
-    return render(request, 'base/contact.html', content)
+    context = {'contact': contact}
+    return render(request, 'base/contact.html', context)
 
 def delete(request, contact_id):
     object = get_object_or_404(Contact, pk=contact_id)
@@ -89,5 +95,14 @@ def delete(request, contact_id):
 
 
 def settings(request):
+    if request.method == 'POST':
+        if str(request.POST.get('password1')) == str(request.POST.get('password2')):
+            u = User.objects.get(id=request.user.id)
+            u.set_password(request.POST.get('password1'))
+            u.save()
+        else:
+            messages.error(request, 'Passwords do not match')
+
+
 
     return render(request, 'base/settings.html')
