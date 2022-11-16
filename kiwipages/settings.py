@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-c!3cy12$jtw@*=5at380%e4ryx_$ybyc1f=_4zuta))$_j3m%e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kiwipages-dev.ap-southeast-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['127.0.0.1']
+#ALLOWED_HOSTS = ['kiwipages-dev.ap-southeast-2.elasticbeanstalk.com']
 
 
 # Application definition
@@ -84,18 +85,24 @@ WSGI_APPLICATION = 'kiwipages.wsgi.application'
 #      'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 #}
-if 'awseb-e-3nbgcyb76g-stack-awsebrdsdatabase-r2lfuxiiaq13.cbyq6fd66ipt.ap-southeast-2.rds.amazonaws.com' in os.environ:
+if 'kiwipages-db.cbyq6fd66ipt.ap-southeast-2.rds.amazonaws.com' in os.environ:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ['ebdb'],
-            'USER': os.environ['adminuser'],
-            'PASSWORD': os.environ['Deazel03'],
-            'HOST': os.environ['awseb-e-3nbgcyb76g-stack-awsebrdsdatabase-r2lfuxiiaq13.cbyq6fd66ipt.ap-southeast-2.rds.amazonaws.com'],
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['kiwipages_db'],
+            'USER': os.environ['postgre'],
+            'PASSWORD': os.environ[''],
+            'HOST': os.environ['kiwipages-db.cbyq6fd66ipt.ap-southeast-2.rds.amazonaws.com'],
             'PORT': os.environ['5432'],
         }
     }
-
+else:
+    DATABASES = {
+        'default': {
+           'ENGINE': 'django.db.backends.sqlite3',
+          'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 
