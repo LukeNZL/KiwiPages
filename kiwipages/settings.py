@@ -78,12 +78,26 @@ WSGI_APPLICATION = 'kiwipages.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+#DATABASES = {
+#    'default': {
+#       'ENGINE': 'django.db.backends.sqlite3',
+#      'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+if 'awseb-e-3nbgcyb76g-stack-awsebrdsdatabase-r2lfuxiiaq13.cbyq6fd66ipt.ap-southeast-2.rds.amazonaws.com' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ['ebdb'],
+            'USER': os.environ['adminuser'],
+            'PASSWORD': os.environ['Deazel03'],
+            'HOST': os.environ['awseb-e-3nbgcyb76g-stack-awsebrdsdatabase-r2lfuxiiaq13.cbyq6fd66ipt.ap-southeast-2.rds.amazonaws.com'],
+            'PORT': os.environ['5432'],
+        }
     }
-}
+
+
+
 
 
 # Password validation
@@ -120,7 +134,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
