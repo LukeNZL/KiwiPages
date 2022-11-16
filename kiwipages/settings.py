@@ -90,7 +90,7 @@ else:
 #      'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 #}
-if 'kiwipages-db.cbyq6fd66ipt.ap-southeast-2.rds.amazonaws.com' in os.environ:
+if 'RDS_HOSTNAME' in os.environ:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
