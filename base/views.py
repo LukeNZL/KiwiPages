@@ -83,7 +83,21 @@ def home(request):
         return redirect('login')
 
 def contact(request, contact_id):
+
+    if request.method == 'POST':
+        u = Contact.objects.get(id=contact_id)
+
+        u.name = request.POST['name']
+        u.phnum = request.POST['phnum']
+        u.email = request.POST['email']
+        u.address = request.POST['address']
+        u.PCM = request.POST['PCM']
+        u.Description = request.POST['Description']
+        # u.ProfilePicture = request.POST['ProfilePicture']
+        u.save()
+
     contact = get_object_or_404(Contact, pk=contact_id)
+
     context = {'contact': contact}
     return render(request, 'base/contact.html', context)
 
